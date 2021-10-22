@@ -5,15 +5,21 @@ import 'package:firechat/widgets/account/edit_account_button.dart';
 import 'package:firechat/widgets/account/help_button.dart';
 import 'package:firechat/widgets/account/notifications_button.dart';
 import 'package:firechat/widgets/account/language_button.dart';
+import 'package:firechat/models/user.dart';
+import 'package:provider/provider.dart';
 
 
 class Account extends StatelessWidget {
+
   static Route<dynamic> route() => MaterialPageRoute(
     builder: (context) => Account(),
   );
 
   @override
   Widget build(BuildContext context) {
+
+    final user = Provider.of<User>(context);
+    
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -27,7 +33,9 @@ class Account extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            AvatarContainer(),
+            AvatarContainer(
+              username: '${user.firstName} ${user.lastName}',
+            ),
             SizedBox(height: 20.0),
             Expanded(
               child: ListView(

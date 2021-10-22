@@ -12,7 +12,7 @@ class FullImageScreen extends StatelessWidget {
           color: Colors.white,
         ),
         title: Text(
-          'Account',
+          'Profile Picture',
           style: TextStyle(
             color: Colors.white,
           ),

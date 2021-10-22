@@ -3,18 +3,20 @@ import 'package:firechat/models/user.dart';
 
 
 class UserDatabaseService {
-  final String? uid;
+  final String uid;
   final CollectionReference usersCollection = FirebaseFirestore.instance.collection('users');
 
-  UserDatabaseService({ this.uid });
+  UserDatabaseService({ required this.uid });
 
-  Stream<DocumentSnapshot> get user {
-    return await usersCollection.doc(uid).get();
+  // User Document String
+  Stream<User> get user {
+    return usersCollection.doc(uid).snapshots().map(_userDataFromSnapshot);
   }
 
   // Adapt Firebase response to custom User object
-  User? _userFromFirestore(DocumentSnapshot? doc) {
-    return user != null ? User(firstName: doc.data()['firstName'], lastName: doc.data['lastName'], email: doc.data['email']) : null;
+  User _userDataFromSnapshot(DocumentSnapshot snapshot) {
+    dynamic data = snapshot.data();
+    return User.fromMap(data);
   }
 
   Future updateUser(String firstName, String lastName, String email) async {

@@ -3,6 +3,10 @@ import 'package:firechat/navigation/app.dart';
 import 'package:firechat/screens/authenticate/authenticate.dart';
 import 'package:provider/provider.dart';
 import 'package:firechat/models/auth.dart';
+import 'package:firechat/services/user.dart';
+import 'package:firechat/services/chat.dart';
+import 'package:firechat/models/user.dart';
+import 'package:firechat/models/chat.dart';
 
 class Wrapper extends StatelessWidget {
   const Wrapper({ Key? key }) : super(key: key);
@@ -12,10 +16,22 @@ class Wrapper extends StatelessWidget {
 
     final auth = Provider.of<Auth?>(context);
 
-    // Return App or Authenticate Widget
+    // Return App Wrapped in MultiProvider or Authenticate Widget
     if (auth == null) {
       return Authenticate();
     }
-    return App();
+    return MultiProvider(
+      providers: [
+        StreamProvider<User>.value(
+          value: UserDatabaseService(uid: auth.uid).user,
+          initialData: new User.fromMap({}),
+        ),
+        StreamProvider<List<Chat>>.value(
+          value: ChatDatabaseService(uid: auth.uid).chats, 
+          initialData: []
+        ),
+      ],
+      child: App()
+    );
   }
 }

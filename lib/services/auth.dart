@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firechat/models/auth.dart';
 import 'package:firechat/models/response.dart';
-import 'package:firechat/services/users.dart';
+import 'package:firechat/services/user.dart';
 
 
 class AuthService {
@@ -18,8 +18,7 @@ class AuthService {
     return _auth.authStateChanges().map(_userFromFirebaseUser);
   }
 
-  // Anonymous Sign In
-  // Unused
+  // Anonymous Sign In (unused)
   Future<Response> signInAnonymously() async {
     try {
       UserCredential result = await _auth.signInAnonymously();

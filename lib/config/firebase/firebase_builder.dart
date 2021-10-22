@@ -1,13 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firechat/services/users.dart';
 import 'package:flutter/material.dart';
-import 'package:firechat/services/auth.dart';
 import 'package:firechat/navigation/wrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firechat/widgets/shared/loading/loading_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:firechat/services/auth.dart';
 import 'package:firechat/models/auth.dart';
-
 
 class FirebaseBuilder extends StatelessWidget {
   @override
@@ -24,18 +21,10 @@ class FirebaseBuilder extends StatelessWidget {
 
         // Show application
         if (snapshot.connectionState == ConnectionState.done) {
-          return MultiProvider(
-            providers: [
-              StreamProvider<Auth?>.value(
-                value: AuthService().user,
-                initialData: null,
-              ),
-              StreamProvider<DocumentSnapshot?>.value(
-                value: UserDatabaseService().user,
-                initialData: null,
-              )
-            ],
-            child: Wrapper()
+          return StreamProvider<Auth?>.value(
+            value: AuthService().user,
+            initialData: null,
+            child: Wrapper(),
           );
         }
 

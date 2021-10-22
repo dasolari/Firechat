@@ -3,7 +3,9 @@ import 'package:firechat/screens/account/full_image.dart';
 
 
 class AvatarContainer extends StatelessWidget {
-  const AvatarContainer({ Key? key }) : super(key: key);
+  final String username;
+
+  AvatarContainer({ required this.username });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class AvatarContainer extends StatelessWidget {
             ),
             SizedBox(height: 10.0),
             Text(
-              'John Doe',
+              username,
               style: TextStyle(
                 fontSize: 24.0,
                 fontWeight: FontWeight.bold,
