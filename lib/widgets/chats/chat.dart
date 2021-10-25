@@ -8,13 +8,15 @@ class ChatTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: Icon(Icons.account_circle_rounded, color: Colors.blue[400]),
-      trailing: Icon(Icons.menu),
-      title: Text(name),
-      subtitle: Text('Last message...'),
-      dense: true,
-      onTap: () {},
+    return Card(
+      child: ListTile(
+        leading: Icon(Icons.account_circle_rounded),
+        trailing: Icon(Icons.menu),
+        title: Text(name),
+        subtitle: Text('Last message...'),
+        dense: true,
+        onTap: () {},
+      ),
     );
   }
 }

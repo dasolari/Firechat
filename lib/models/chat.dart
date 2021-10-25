@@ -18,7 +18,7 @@ class Chat {
       id: data['id'] ?? 'default',
       type: data['type'] ?? 'chat',
       name: data['name'] ?? 'My Default Chat', 
-      picture: data['lastName'] ?? 'default', 
+      picture: data['picture'] ?? 'default', 
       participants: data['participants'] ?? ['default_1', 'default_2']
     );
   }

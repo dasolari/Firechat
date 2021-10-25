@@ -44,7 +44,18 @@ class _ChatsState extends State<Chats> {
         children: <Widget>[
           Center(
             child: chats.length == 0 ?
-            Text('No chats yet...')
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.message_outlined, 
+                  size: 90,
+                  color: Theme.of(context).primaryColor,
+                ),
+                Text('No chats yet 😔', style: TextStyle(fontSize: 20)),
+                Text('You can create one below', style: TextStyle(fontSize: 20))
+              ],
+            )
             :
             ListView(
               children: chats.map((chat) => new ChatTile(name: chat.name)).toList()

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:firechat/widgets/chats/panel_info.dart';
 
 
 class CreateChatSlideUp extends StatefulWidget {
@@ -13,11 +14,6 @@ class CreateChatSlideUpState extends State<CreateChatSlideUp> {
   
   PanelController _pc = new PanelController();
 
-  BorderRadiusGeometry radius = BorderRadius.only(
-    topLeft: Radius.circular(26.0),
-    topRight: Radius.circular(26.0),
-  );
-
   Future<void> openPanel() async {
     await _pc.open();
   }
@@ -29,10 +25,13 @@ class CreateChatSlideUpState extends State<CreateChatSlideUp> {
   @override
   Widget build(BuildContext context) {
     return SlidingUpPanel(
-      panel: Center(child: Text('Slider Up')),
-      borderRadius: radius,
+      panel: PanelInfo(),
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(26.0),
+        topRight: Radius.circular(26.0)
+      ),
       margin: EdgeInsets.symmetric(horizontal: 5.0, vertical: 0.0),
-      maxHeight: MediaQuery.of(context).size.height - 300,
+      maxHeight: MediaQuery.of(context).size.height - 250,
       minHeight: 0,
       backdropEnabled: true,
       isDraggable: false,

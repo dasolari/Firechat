@@ -14,7 +14,8 @@ class Firechat extends StatelessWidget {
         primarySwatch: Colors.blue,
         primaryColor: Colors.orange[700],
         accentColor: Colors.amber[700],
-        highlightColor: Colors.teal,
+        highlightColor: Colors.deepOrangeAccent,
+        scaffoldBackgroundColor: Colors.white,
         ),
       home: FirebaseBuilder(),
     );
