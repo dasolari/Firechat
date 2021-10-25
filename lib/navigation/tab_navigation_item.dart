@@ -6,30 +6,26 @@ import 'package:firechat/screens/account/account.dart';
 
 class TabNavigationItem {
   final Widget page;
-  final String title;
   final Icon icon;
+  static double size = 30.0;
 
   TabNavigationItem({
     required this.page,
-    required this.title,
     required this.icon,
   });
   
   static List<TabNavigationItem> get items => [
     TabNavigationItem(
       page: Home(),
-      icon: Icon(Icons.home),
-      title: 'Home',
+      icon: Icon(Icons.home, color: Colors.white, size: size),
     ),
     TabNavigationItem(
       page: Chats(),
-      icon: Icon(Icons.chat),
-      title: 'Chats',
+      icon: Icon(Icons.chat, color: Colors.white, size: size),
     ),
     TabNavigationItem(
       page: Account(),
-      icon: Icon(Icons.person),
-      title: 'Account',
+      icon: Icon(Icons.person, color: Colors.white, size: size),
     ),
   ];
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firechat/navigation/tab_navigation_item.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 
 class TabNavigator extends StatefulWidget {
@@ -25,18 +26,16 @@ class _TabNavigatorState extends State<TabNavigator> {
           for (final tabItem in TabNavigationItem.items) tabItem.page,
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Theme.of(context).primaryColor,
-        showSelectedLabels: true,
-        selectedItemColor: Colors.white,
-        currentIndex: _selectedIndex,
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: Colors.white,
+        color: Theme.of(context).primaryColor,
+        buttonBackgroundColor: Theme.of(context).primaryColor,
+        animationDuration: Duration(milliseconds: 300),
+        animationCurve: Curves.easeInOutCubic,
+        index: _selectedIndex,
         onTap: _switchScreen,
         items: [
-          for (final tabItem in TabNavigationItem.items)
-            BottomNavigationBarItem(
-              icon: tabItem.icon,
-              label: tabItem.title,
-            )
+          for (final tabItem in TabNavigationItem.items) tabItem.icon
         ],
       ),
     );
